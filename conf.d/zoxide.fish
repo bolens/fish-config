@@ -1,5 +1,6 @@
 # zoxide Fish shell integration
-# Set zoxide data directory
-set -gx Z_DATA_DIR "$HOME/.local/share/z"
+set -gx _ZO_DATA_DIR "$HOME/.local/share/zoxide"
 
-zoxide init fish | source
+if command -q zoxide
+    zoxide init fish | source
+end
