@@ -1,6 +1,6 @@
 # navi cheatsheet widget
 # Ctrl+G is taken by ghq, so navi is mapped to Alt+N
-if command -q navi
+if status is-interactive; and command -q navi
     navi widget fish | source
     # Override navi's default Ctrl+G binding with Alt+N
     bind \en _navi_smart_replace

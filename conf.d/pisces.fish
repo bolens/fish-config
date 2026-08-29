@@ -1,3 +1,5 @@
+status is-interactive; or exit
+
 set -l _pisces_bind_mode default
 switch $fish_key_bindings
     case 'fish_vi_key_bindings' 'fish_hybrid_key_bindings'
