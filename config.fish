@@ -8,9 +8,9 @@ end
 
 # Paths not owned by mise. fish_add_path is idempotent and ignores missing
 # directories, so it is safe in both interactive and non-interactive shells.
-fish_add_path -p "$HOME/go/bin"
-fish_add_path -a "$HOME/.local/bin"
-fish_add_path -a "$HOME/.pixi/bin"
+fish_add_path --global -p "$HOME/go/bin"
+fish_add_path --global -a "$HOME/.local/bin"
+fish_add_path --global -a "$HOME/.pixi/bin"
 
 # Keep vcpkg and Nix tools consistent in fish sessions.
 set -gx VCPKG_ROOT "$HOME/.local/share/vcpkg"
