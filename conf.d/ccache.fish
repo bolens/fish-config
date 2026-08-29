@@ -14,7 +14,7 @@ set -gx CCACHE_BASEDIR "$HOME"
 #         -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ...
 
 # Optional clang path when using CC=clang in a project.
-function ccache-clang -d 'Run a command with ccache-wrapped clang/clang++'
+function ccache-cmake-clang -d 'Run CMake tooling with ccache-wrapped clang/clang++'
     set -lx CC clang
     set -lx CXX clang++
     set -lx CMAKE_C_COMPILER_LAUNCHER ccache
