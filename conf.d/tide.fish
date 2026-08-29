@@ -114,7 +114,7 @@ set -g tide_python_bg_color 444444
 set -g tide_python_color 00AFAF
 set -g tide_python_icon \U000f0320
 set -g tide_right_prompt_frame_enabled false
-set -g tide_right_prompt_items status cmd_duration context jobs direnv bun node python rustc java php pulumi ruby go gcloud kubectl distrobox toolbox terraform aws nix_shell crystal elixir zig time
+set -g tide_right_prompt_items status cmd_duration context jobs direnv bun node python rustc java php ruby go terraform nix_shell zig time
 set -g tide_right_prompt_prefix \ue0b6
 set -g tide_right_prompt_separator_diff_color \ue0ba
 set -g tide_right_prompt_separator_same_color \ue0b3
