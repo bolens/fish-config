@@ -2,6 +2,10 @@
 
 Personal Fish shell configuration for Arch Linux. Managed with [Fisher](https://github.com/jorgebucaran/fisher) and the [Tide](https://github.com/IlanCosman/tide) prompt.
 
+This machine runs Omarchy on CachyOS. User configuration takes precedence over
+CachyOS vendor snippets without modifying package-owned files under
+`/usr/share/fish`; Omarchy continues to own the Hyprland/UWSM session.
+
 ## Structure
 
 ```
@@ -19,13 +23,16 @@ Personal Fish shell configuration for Arch Linux. Managed with [Fisher](https://
 | Plugin | Purpose |
 |---|---|
 | [ilancosman/tide](https://github.com/IlanCosman/tide) | Prompt |
-| [jhillyerd/plugin-git](https://github.com/jhillyerd/plugin-git) | Git abbreviations |
 | [jethrokuan/fzf](https://github.com/jethrokuan/fzf) | fzf key bindings |
-| [franciscolourenco/done](https://github.com/franciscolourenco/done) | Notify on long commands |
 | [laughedelic/pisces](https://github.com/laughedelic/pisces) | Auto-close brackets/quotes |
 | [decors/fish-ghq](https://github.com/decors/fish-ghq) | ghq repo navigation (Ctrl+G) |
-| [edc/bass](https://github.com/edc/bass) | Run bash scripts in fish |
-| [mattmc3/fishcheck](https://github.com/mattmc3/fishcheck) | Fish configuration checks |
+
+Common Git abbreviations are maintained locally in `conf.d/git-abbr.fish`.
+The curated set intentionally omits shortcuts for destructive reset and clean
+operations.
+
+Long-command notifications are implemented locally for Omarchy's Hyprland
+session and `notify-send`; no focus probe runs during shell startup.
 
 ## Modern CLI tool integrations
 
@@ -41,7 +48,6 @@ shortcuts for modern alternatives:
 | `repeat` | [viddy](https://github.com/sachaos/viddy) |
 | `diskfree` / `diskuse` | [duf](https://github.com/muesli/duf) / [dust](https://github.com/bootandy/dust) |
 | `monitor` | [btop](https://github.com/aristocratos/btop) |
-| `cat` | [bat](https://github.com/sharkdp/bat) |
 | `ls` / `ll` / `la` / `lt` | [eza](https://github.com/eza-community/eza) |
 | `gdv` | [delta](https://github.com/dandavison/delta) diff viewer |
 | `lg` | — | [lazygit](https://github.com/jesseduffield/lazygit) |
@@ -53,6 +59,15 @@ Other integrations: [fzf](https://github.com/junegunn/fzf), [zoxide](https://git
 Mise uses shim-based activation to keep `PATH` compact while retaining
 per-project runtime selection. Environment-changing mise features that require
 shell hooks should be invoked explicitly with `mise x` or `mise env`.
+
+Session defaults and paths are global variables loaded from `conf.d`.
+Universal variables are reserved for Tide's asynchronous prompt transport and
+Fisher bookkeeping, reducing cross-shell writes and interrupted snapshots.
+
+The empty `conf.d/pure.fish`, `conf.d/_pure_init.fish`, and
+`conf.d/autopair.fish` files intentionally shadow CachyOS vendor integrations:
+Tide replaces Pure, and Pisces replaces autopair. Keep these stubs while
+`cachyos-fish-config` depends on `fish-pure-prompt`.
 
 ## Maintenance
 
