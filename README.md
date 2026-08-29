@@ -86,8 +86,9 @@ Machine-specific secrets and personal values (SSH key names, API tokens) live in
 # conf.d/private.fish — not tracked in git
 
 set -gx MY_API_TOKEN "..."
-
-if status is-interactive
-    keychain --eval --quiet your-key-name | source
-end
 ```
+
+On Omarchy, start Keychain once from `~/.config/hypr/autostart.lua` and have
+private Fish config import its validated cache. Avoid starting or evaluating
+Keychain in every shell; Hyprland autostart jobs launch concurrently, so the
+local importer uses a short bounded retry during a fresh login.
