@@ -1,2 +1,4 @@
 # Dynamic just completions
-JUST_COMPLETE=fish just | source
+if set -l just_completions (JUST_COMPLETE=fish just)
+    string join \n -- $just_completions | source
+end

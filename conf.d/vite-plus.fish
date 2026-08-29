@@ -27,7 +27,10 @@ function vp
         end
         set -lx VP_ENV_USE_EVAL_ENABLE 1
         set -lx VP_SHELL fish
-        command vp $argv | source
+        set -l env_commands (command vp $argv)
+        set -l vp_status $status
+        test $vp_status -eq 0; or return $vp_status
+        string join \n -- $env_commands | source
     else
         command vp $argv
     end
