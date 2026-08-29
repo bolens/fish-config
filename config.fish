@@ -1,16 +1,16 @@
-# Show fastfetch as the Fish greeting
+# Show fastfetch only in the top-level interactive shell. Nested Fish sessions
+# stay quiet and start faster.
 function fish_greeting
-	fastfetch
+	if test "$SHLVL" -le 1; and type -q fastfetch
+		fastfetch
+	end
 end
 
-# Ensure Go-installed CLIs (for example actionlint) are on PATH.
-fish_add_path -p $HOME/go/bin
-if type -q go
-    set -l _gopath (go env GOPATH 2>/dev/null)
-    if test -n "$_gopath"
-        fish_add_path -p "$_gopath/bin"
-    end
-end
+# Paths not owned by mise. fish_add_path is idempotent and ignores missing
+# directories, so it is safe in both interactive and non-interactive shells.
+fish_add_path -p "$HOME/go/bin"
+fish_add_path -a "$HOME/.local/bin"
+fish_add_path -a "$HOME/.pixi/bin"
 
 # Keep vcpkg and Nix tools consistent in fish sessions.
 set -gx VCPKG_ROOT "$HOME/.local/share/vcpkg"
@@ -27,21 +27,27 @@ set -gx LANG "en_US.UTF-8"
 
 # Use micro for tools that honor EDITOR/VISUAL (e.g. sudoedit).
 set -gx EDITOR "micro"
-set -gx VISUAL "code-insiders --wait"
+set -gx VISUAL "code-wait"
 
 # Configure ripgrep configuration file path
 set -gx RIPGREP_CONFIG_PATH "$HOME/.ripgreprc"
 
-# Added by Antigravity CLI installer
-set -gx PATH "/home/panda/.local/bin" $PATH
+# Activate the current opam switch when an OCaml project selects one.
+test -r "$HOME/.opam/opam-init/init.fish" && source "$HOME/.opam/opam-init/init.fish" >/dev/null 2>/dev/null; or true
 
-# Helpful aliases for newly configured dotfiles
-alias hx="helix"
-alias lg="lazygit"
-alias ld="lazydocker"
-alias y="yazi"
-alias ytdl="yt-dlp"
-alias get_idf="source /opt/esp-idf/export.fish"
-
-# NVIDIA Prime Render Offload helper for hybrid GPU setup
-alias nvrun="env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only"
+if status is-interactive
+    # Expand discoverable shortcuts in the command line without shadowing the
+    # standard commands that scripts and copied examples expect.
+    abbr --add --global y yazi
+    abbr --add --global ytdl yt-dlp
+    abbr --add --global f fd
+    abbr --add --global rgi 'rg --hidden --pcre2'
+    abbr --add --global diskfree duf
+    abbr --add --global diskuse dust
+    abbr --add --global http curlie
+    abbr --add --global dns dog
+    abbr --add --global monitor btop
+    abbr --add --global repeat viddy
+    abbr --add --global get_idf 'source /opt/esp-idf/export.fish'
+    abbr --add --global nvrun 'env __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia __VK_LAYER_NV_optimus=NVIDIA_only'
+end
