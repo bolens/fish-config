@@ -24,30 +24,43 @@ Personal Fish shell configuration for Arch Linux. Managed with [Fisher](https://
 | [franciscolourenco/done](https://github.com/franciscolourenco/done) | Notify on long commands |
 | [laughedelic/pisces](https://github.com/laughedelic/pisces) | Auto-close brackets/quotes |
 | [decors/fish-ghq](https://github.com/decors/fish-ghq) | ghq repo navigation (Ctrl+G) |
-| [jorgebucaran/nvm.fish](https://github.com/jorgebucaran/nvm.fish) | Node version management |
 | [edc/bass](https://github.com/edc/bass) | Run bash scripts in fish |
+| [mattmc3/fishcheck](https://github.com/mattmc3/fishcheck) | Fish configuration checks |
 
 ## Modern CLI tool integrations
 
-The config wraps or defaults to modern alternatives where available:
+The config keeps standard command names compatible and provides explicit
+shortcuts for modern alternatives:
 
-| Wrapper | Replaces | Tool |
-|---|---|---|
-| `cat` | cat | [bat](https://github.com/sharkdp/bat) |
-| `ls` / `ll` / `la` / `lt` | ls | [eza](https://github.com/eza-community/eza) |
-| `grep` | grep | [ripgrep](https://github.com/BurntSushi/ripgrep) |
-| `find` | find | [fd](https://github.com/sharkdp/fd) |
-| `curl` | curl | [curlie](https://github.com/rs/curlie) |
-| `dig` | dig | [dog](https://github.com/ogham/dog) |
-| `watch` | watch | [viddy](https://github.com/sachaos/viddy) |
-| `du` | du | [duf](https://github.com/muesli/duf) |
-| `top` / `htop` | htop | [glances](https://github.com/nicolargo/glances) |
-| `gdv` | vim diff | [delta](https://github.com/dandavison/delta) |
+| Shortcut | Tool |
+|---|---|
+| `f` | [fd](https://github.com/sharkdp/fd) |
+| `rgi` | [ripgrep](https://github.com/BurntSushi/ripgrep) with hidden files and PCRE2 |
+| `http` | [curlie](https://github.com/rs/curlie) |
+| `dns` | [dog](https://github.com/ogham/dog) |
+| `repeat` | [viddy](https://github.com/sachaos/viddy) |
+| `diskfree` / `diskuse` | [duf](https://github.com/muesli/duf) / [dust](https://github.com/bootandy/dust) |
+| `monitor` | [btop](https://github.com/aristocratos/btop) |
+| `cat` | [bat](https://github.com/sharkdp/bat) |
+| `ls` / `ll` / `la` / `lt` | [eza](https://github.com/eza-community/eza) |
+| `gdv` | [delta](https://github.com/dandavison/delta) diff viewer |
 | `lg` | — | [lazygit](https://github.com/jesseduffield/lazygit) |
 | `ld` | — | [lazydocker](https://github.com/jesseduffield/lazydocker) |
 | `yy` | — | [yazi](https://github.com/sxyazi/yazi) (cd on exit) |
 
 Other integrations: [fzf](https://github.com/junegunn/fzf), [zoxide](https://github.com/ajeetdsouza/zoxide), [mise](https://github.com/jdx/mise), [navi](https://github.com/denisidoro/navi) (Alt+N), [delta](https://github.com/dandavison/delta) as git pager, [bat](https://github.com/sharkdp/bat) as MANPAGER.
+
+Mise uses shim-based activation to keep `PATH` compact while retaining
+per-project runtime selection. Environment-changing mise features that require
+shell hooks should be invoked explicitly with `mise x` or `mise env`.
+
+## Maintenance
+
+Fisher-managed functions and completions are committed intentionally so a
+fresh clone works offline. Treat `fish_plugins` as the source-of-truth manifest;
+after changing it, run `fisher update` and commit the resulting generated-file
+changes together. Machine state (`fish_variables*`, history, and
+`conf.d/private.fish`) remains ignored.
 
 ## Private config
 
