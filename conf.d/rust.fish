@@ -1,3 +1,4 @@
-# Rust environment setup
-# rustup.fish (env.fish) handles adding ~/.cargo/bin to PATH.
-set -gx RUSTFLAGS "-C target-cpu=native -C opt-level=3"
+# Keep optimization and target CPU policy in Cargo profiles or project config.
+# Global RUSTFLAGS slow debug builds, fragment caches, and make artifacts less
+# portable. rustup.fish handles adding ~/.cargo/bin to PATH.
+set -e RUSTFLAGS

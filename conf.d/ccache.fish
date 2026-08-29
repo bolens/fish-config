@@ -8,21 +8,16 @@ set -gx CCACHE_MAXSIZE 20G
 set -gx CCACHE_COMPRESS true
 set -gx CCACHE_COMPRESSLEVEL 6
 set -gx CCACHE_BASEDIR "$HOME"
-# Safe sloppiness for local dev rebuilds (not for release/package builds).
-set -gx CCACHE_SLOPPINESS file_macro,time_macros,include_file_mtime,include_file_ctime
-set -gx CCACHE_HARDLINK true
-
-# Prefer ccache-wrapped compilers unless a tool already set CC/CXX (cross-compile, etc.).
-if not set -q CC
-    set -gx CC "ccache gcc"
-end
-if not set -q CXX
-    set -gx CXX "ccache g++"
-end
+# Keep correctness-sensitive hardlink and sloppiness policies project-local.
+# Build systems should opt in with their native launcher support, for example:
+#   cmake -DCMAKE_C_COMPILER_LAUNCHER=ccache \
+#         -DCMAKE_CXX_COMPILER_LAUNCHER=ccache ...
 
 # Optional clang path when using CC=clang in a project.
 function ccache-clang -d 'Run a command with ccache-wrapped clang/clang++'
-    set -lx CC ccache clang
-    set -lx CXX ccache clang++
+    set -lx CC clang
+    set -lx CXX clang++
+    set -lx CMAKE_C_COMPILER_LAUNCHER ccache
+    set -lx CMAKE_CXX_COMPILER_LAUNCHER ccache
     command $argv
 end

@@ -1,11 +1,19 @@
 # Fix inherited environment pollution from /etc/environment and profile.d scripts
 # that don't expand variables correctly or run multiple times.
 
-# Fix LD_LIBRARY_PATH: /etc/environment sets it as the literal string
-# "LD_LIBRARY_PATH=/usr/lib/mold:$LD_LIBRARY_PATH" — $LD_LIBRARY_PATH is NOT
-# expanded in /etc/environment, so fish inherits a broken path list containing
-# the literal string "$LD_LIBRARY_PATH" as an element. Override with the correct value.
-set -gx LD_LIBRARY_PATH /usr/lib/mold
+# /etc/environment contains a literal, unexpanded $LD_LIBRARY_PATH entry.
+# Do not replace it with a global mold library override: that can change library
+# resolution for every dynamically linked program. Keep Fish sessions clean
+# until the system-level entry can be removed.
+set -e LD_LIBRARY_PATH
+
+# Session managers and nested login shells may source package profile snippets
+# more than once. Preserve first-match precedence while removing duplicates.
+set -l clean_path
+for path_entry in $PATH
+    contains -- "$path_entry" $clean_path; or set -a clean_path "$path_entry"
+end
+set -gx PATH $clean_path
 
 # Unset QML2_IMPORT_PATH: previously set globally by /etc/profile.d/meshroom.sh
 # (now disabled). That script prepended /usr/lib/qt/qml (Qt5) to QML2_IMPORT_PATH,
