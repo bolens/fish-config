@@ -92,3 +92,7 @@ On Omarchy, start Keychain once from `~/.config/hypr/autostart.lua` and have
 private Fish config import its validated cache. Avoid starting or evaluating
 Keychain in every shell; Hyprland autostart jobs launch concurrently, so the
 local importer uses a short bounded retry during a fresh login.
+
+### Git hooks
+
+Run `bash scripts/install-git-hooks` once per clone. The pre-commit hook runs fast staged checks; pre-push runs the broader local CI gate.
