@@ -96,3 +96,7 @@ local importer uses a short bounded retry during a fresh login.
 ### Git hooks
 
 Run `bash scripts/install-git-hooks` once per clone. The pre-commit hook runs fast staged checks; pre-push runs the broader local CI gate.
+
+## Development environment
+
+See [development environments](docs/development-environments.md) for locked Fish syntax checks and local Docker, Podman, and Apple container tooling.

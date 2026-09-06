@@ -1,0 +1,15 @@
+{
+  "markdown": [
+    "*.md",
+    "docs/**/*.md",
+    "specs/002-development-environments/*.md"
+  ],
+  "python": [
+    "scripts/development-container.py",
+    "tests/test_development_container.py"
+  ],
+  "shell": [
+    "scripts/check-development.sh"
+  ],
+  "notes": "Existing Fish syntax CI owns maintained and Fisher-provided Fish files. Managed Spec Kit integrations retain their dedicated gate."
+}

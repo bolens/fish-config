@@ -2,3 +2,14 @@ fish_variables
 fish_variables*
 fish_history
 conf.d/private.fish
+
+# Local development tooling state
+.devenv/
+.direnv/
+.devenv.*/
+.devenv.flake.nix
+devenv.local.nix
+devenv.local.yaml
+__pycache__/
+*.py[cod]
+.ruff_cache/
