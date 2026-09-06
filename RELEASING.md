@@ -1,5 +1,7 @@
 # Delivery playbook
 
+[Documentation](docs/README.md)
+
 Fish Config continuously delivers source configuration from protected `main`;
 it has no tagged releases. Installing it into a live shell is separate from
 merging repository state.

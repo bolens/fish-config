@@ -1,5 +1,7 @@
 # fish-config Spec Kit project guide
 
+[Documentation](../../docs/README.md)
+
 Modular Fish configuration with optional integrations and private host state kept
 separate.
 
