@@ -176,6 +176,12 @@ mount semantics, and unavailable host engines remain distinct from live shell
 installation. Both Spec Kit workflow and tooling refs adopt the same verified
 central revision; project memory/private state retains its original ownership.
 
+The [shared editor tasks](../../.vscode/README.md), integrated from ea439e5,
+run an explicit current-file Fish syntax check or repository diff-whitespace check.
+They use process arguments, preserve filenames containing spaces, and never install
+recommended extensions or activate a debugger automatically. Native tools must
+already be available. Personal editor state remains ignored.
+
 Exact PR/main checks and operational exclusions are recorded in delivery evidence.
 A successful fixture verifies its command seam, not actual privileged maintenance,
 all prompt visuals, all completion versions or installed desktop behavior.
