@@ -49,3 +49,33 @@ A maintainer updates source configuration and its Fisher manifest.
 ## Edge cases and operational limits
 
 Configuration is not installed or sourced into the live user session during this retrofit. Privileged maintenance functions are inspected as source, not executed. Syntax checks do not prove optional external tools, every completion, or host integrations at runtime. No Fisher update is required for unchanged vendored assets.
+
+## Corrective capability extension: 2026-09-06
+
+The detailed audit starts at `3bc6cc8` after the development-environment feature.
+Existing source behavior is recorded separately in legacy-contracts.md.
+
+- **FR-006**: Optional navi initialization MUST preserve ghq's existing Ctrl+G
+  binding while installing Alt+N in applicable key maps; repeated sourcing must
+  not remove another integration's binding.
+- **FR-007**: Cache clearing MUST preserve the cache command's failure status and
+  print success only after successful clearing. Package cleanup MUST distinguish
+  no orphan results from a failed query and must not invoke removal after failure.
+- **FR-008**: Pacman lock recovery MUST refuse removal after an active-owner
+  result, unavailable owner probe, or owner-probe diagnostics. A silent nonzero
+  status alone is not proof that the lock is stale.
+- **FR-009**: The yazi directory wrapper MUST preserve a failed child status,
+  clean up only its owned temporary file, and avoid changing directory on failure.
+- **FR-010**: Runtime acceptance MUST use isolated Fish processes and synthetic
+  external-command seams. Native checks must include these regressions without
+  installing configuration, clearing caches, changing packages, or touching the
+  real pacman lock.
+- **FR-011**: Completion files MUST contain executable Fish definitions rather
+  than generator errors, terminal help, placeholders, or empty files that suppress
+  bundled fallback. Retain deliberate inactive configuration stubs. Restore
+  fallback for standard bundled completions and provide complete supported uv and
+  Poetry generation, with isolated queries proving real command suggestions and
+  no target command execution merely from loading static definitions.
+- **FR-012**: Tide startup cleanup MUST preserve all existing per-process prompt
+  variables if the live-Fish PID query fails or returns no usable process list;
+  unavailable evidence must not erase another shell's transport state.

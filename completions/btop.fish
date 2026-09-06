@@ -1,0 +1,15 @@
+# Maintained from btop's documented --help options; btop has no --completion flag.
+complete -c btop -f
+complete -c btop -s c -l config -r -F -d 'Path to a config file'
+complete -c btop -s d -l debug -d 'Enable debug logs and metrics'
+complete -c btop -s f -l filter -x -d 'Initial process filter'
+complete -c btop -l force-utf -d 'Override UTF locale detection'
+complete -c btop -s l -l low-color -d 'Use 256 colors'
+complete -c btop -s p -l preset -x -a '0 1 2 3 4 5 6 7 8 9' -d 'Select a preset'
+complete -c btop -s t -l tty -d 'Force TTY mode'
+complete -c btop -l themes-dir -x -a '(__fish_complete_directories)' -d 'Custom themes directory'
+complete -c btop -l no-tty -d 'Disable TTY mode'
+complete -c btop -s u -l update -x -d 'Update interval in milliseconds'
+complete -c btop -l default-config -d 'Print default configuration'
+complete -c btop -s h -l help -d 'Show help'
+complete -c btop -s V -l version -d 'Show version'
