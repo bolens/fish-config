@@ -4,3 +4,5 @@ Retrospective baselines identify their inspected revision and acceptance evidenc
 Installation validation alone does not establish feature completion.
 
 - [Fish startup and maintained shell configuration](001-shell-baseline/spec.md): [plan](001-shell-baseline/plan.md), [coverage](001-shell-baseline/coverage.md), [tasks](001-shell-baseline/tasks.md).
+
+- [Development environments](002-development-environments/spec.md): Fish syntax tooling and local container validation.
