@@ -50,9 +50,9 @@ shortcuts for modern alternatives:
 | `monitor` | [btop](https://github.com/aristocratos/btop) |
 | `ls` / `ll` / `la` / `lt` | [eza](https://github.com/eza-community/eza) |
 | `gdv` | [delta](https://github.com/dandavison/delta) diff viewer |
-| `lg` | — | [lazygit](https://github.com/jesseduffield/lazygit) |
-| `ld` | — | [lazydocker](https://github.com/jesseduffield/lazydocker) |
-| `yy` | — | [yazi](https://github.com/sxyazi/yazi) (cd on exit) |
+| `lg` | [lazygit](https://github.com/jesseduffield/lazygit) |
+| `ld` | [lazydocker](https://github.com/jesseduffield/lazydocker) |
+| `yy` | [yazi](https://github.com/sxyazi/yazi) (cd on exit) |
 
 Other integrations: [fzf](https://github.com/junegunn/fzf), [zoxide](https://github.com/ajeetdsouza/zoxide), [mise](https://github.com/jdx/mise), [navi](https://github.com/denisidoro/navi) (Alt+N), [delta](https://github.com/dandavison/delta) as git pager, [bat](https://github.com/sharkdp/bat) as MANPAGER.
 

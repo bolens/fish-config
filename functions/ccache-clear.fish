@@ -5,7 +5,7 @@ function ccache-clear -d 'Clear the ccache directory'
     end
     read -l -P 'Clear ccache at '$CCACHE_DIR'? [y/N] ' confirm
     if test "$confirm" = y -o "$confirm" = Y
-        ccache -C
+        ccache -C; or return $status
         echo 'ccache cleared'
     else
         echo 'cancelled'
