@@ -157,7 +157,8 @@ through their supported Fish interfaces, replacing placeholders. The generated
 function/option/subcommand declarations remain source-controlled; do not manually
 trim them to examples. [Completion maintenance](../../completions/README.md) records
 generation and fallback ownership. Isolated queries prove git/cargo version flags,
-uv sync and Poetry install suggestions; uv/Poetry stubs prove these static queries
+uv sync and Poetry install suggestions. Git/Cargo presence stubs satisfy Fish
+autoloading and return empty metadata without using host toolchains; uv/Poetry stubs prove these static queries
 do not invoke either tool.
 
 Dynamic gh/Docker completion helpers call their associated program only when

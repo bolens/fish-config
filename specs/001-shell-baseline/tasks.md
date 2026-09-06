@@ -58,3 +58,9 @@ prompt expansion defect hidden by the host environment. The isolated fixture now
 removes that inherited variable. Quoting the complete prompt retains the read
 destination; eight confirmation cases cover unset/custom directories and y/Y/n/empty
 answers. Local regression execution and hosted delivery are recorded in the PR.
+
+The source-free Linux image then exposed the Cargo completion fixture's dependency
+on an installed executable: Fish does not autoload its packaged completion for an
+absent command. The fixture now supplies Git/Cargo presence stubs, isolates PATH
+to its own bin directory, and retains the real packaged completion query. It does
+not install Cargo or replace the completion definitions under test.

@@ -68,6 +68,11 @@ printf 'startup-ok\\n'
                 self.assertEqual(result.stdout, 'startup-ok\n')
 
     def test_completion_sources_provide_real_suggestions(self):
+        # Fish autoloads packaged completions only for commands that exist.
+        # Empty metadata stubs isolate this query from installed toolchains.
+        for name in ('git', 'cargo'):
+            self.command(name, 'exit 0')
+        self.env['PATH'] = str(self.bin)
         for name in ('uv', 'poetry'):
             self.command(name, 'echo forbidden-generator >&2\nexit 97')
         for query, expected in (('git --ver', '--version'), ('cargo --ver', '--version'),
