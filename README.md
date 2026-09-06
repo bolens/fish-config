@@ -100,3 +100,8 @@ Run `bash scripts/install-git-hooks` once per clone. The pre-commit hook runs fa
 ## Development environment
 
 See [development environments](docs/development-environments.md) for locked Fish syntax checks and local Docker, Podman, and Apple container tooling.
+
+## License scope and attribution
+
+See [third-party notices](THIRD_PARTY_NOTICES.md) for the project license scope,
+retained upstream notices, and dependency or asset exceptions.
