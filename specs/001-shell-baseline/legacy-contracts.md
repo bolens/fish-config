@@ -93,7 +93,7 @@ separate execution boundaries, not inferred from parsing a wrapper.
 
 | Function | Contract and limits |
 | --- | --- |
-| `ccache-stats`, `ccache-clear` | Guard optional tool availability; display statistics or ask y/Y before clearing. A failed clear cannot print success and retains child status (FR-007). |
+| `ccache-stats`, `ccache-clear` | Guard optional tool availability; display statistics or ask y/Y before clearing, including when CCACHE_DIR is unset or contains spaces. A failed clear cannot print success and retains child status (FR-007). |
 | `cleanup` | Query orphan package names; genuine empty results report no action. Failed/diagnostic/partial queries cannot trigger sudo removal (FR-007). A successful nonempty query forwards exact package names to pacman -Rns. |
 | `fixpacman` | Return without action for an absent lock. Require available owner-probe tools, refuse an active owner, abnormal status or diagnostic output, and only remove a candidate unused lock after the checked probe (FR-008). This is not a general transaction/recovery or namespace-isolation proof. |
 | `update` | Prefer paru -Syu, otherwise sudo pacman -Syu, forwarding caller arguments. No update runs at shell startup. |

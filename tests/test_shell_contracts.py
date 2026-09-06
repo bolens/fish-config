@@ -113,9 +113,30 @@ end
 
     def test_failed_cache_clear_does_not_claim_success(self):
         self.command('ccache', 'exit 23')
+        self.env.pop('CCACHE_DIR', None)
         result = self.fish('source functions/ccache-clear.fish; ccache-clear', stdin='y\n')
         self.assertEqual(result.returncode, 23, result.stdout + result.stderr)
         self.assertNotIn('ccache cleared', result.stdout)
+
+    def test_cache_clear_confirmation_with_and_without_custom_directory(self):
+        self.command('ccache', 'printf "%s\\n" "$*" >> "$FIXTURE_ROOT/cache-calls"')
+        for directory in (None, str(self.root / 'cache with spaces')):
+            for answer, clears in (('y', True), ('Y', True), ('n', False), ('', False)):
+                with self.subTest(directory=directory, answer=answer):
+                    self.env.pop('CCACHE_DIR', None)
+                    if directory is not None:
+                        self.env['CCACHE_DIR'] = directory
+                    calls = self.root / 'cache-calls'
+                    calls.unlink(missing_ok=True)
+                    result = self.fish('source functions/ccache-clear.fish; ccache-clear',
+                                       stdin=answer + '\n')
+                    self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                    self.assertEqual(calls.exists(), clears)
+                    if clears:
+                        self.assertEqual(calls.read_text(), '-C\n')
+                        self.assertIn('ccache cleared', result.stdout)
+                    else:
+                        self.assertIn('cancelled', result.stdout)
 
     def test_failed_orphan_query_is_not_empty_success(self):
         self.command('pacman', 'echo "fixture query failed" >&2\nexit 2')

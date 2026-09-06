@@ -52,3 +52,9 @@ The publication scan found a frozen host home/UID/multishell path in the inactiv
 fnm example. Replace it with HOME-derived setup and explicit current-process
 generation while retaining its .disabled suffix (FR-004). The remaining upstream
 Python prompt path is a documented illustrative example, not owner state.
+
+CI follow-up: both Nix development environments exposed an unset-CCACHE_DIR
+prompt expansion defect hidden by the host environment. The isolated fixture now
+removes that inherited variable. Quoting the complete prompt retains the read
+destination; eight confirmation cases cover unset/custom directories and y/Y/n/empty
+answers. Local regression execution and hosted delivery are recorded in the PR.
