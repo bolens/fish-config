@@ -1,5 +1,7 @@
 # Fish Configuration Constitution
 
+[Documentation](../../docs/README.md)
+
 ## Core Principles
 
 ### I. Fast, Reliable Interactive Startup

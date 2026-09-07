@@ -1,5 +1,7 @@
 # fish-config
 
+[Documentation](docs/README.md)
+
 Personal Fish shell configuration for Arch Linux. Managed with [Fisher](https://github.com/jorgebucaran/fisher) and the [Tide](https://github.com/IlanCosman/tide) prompt.
 
 This machine runs Omarchy on CachyOS. User configuration takes precedence over
