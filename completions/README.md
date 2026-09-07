@@ -1,5 +1,7 @@
 # Completion ownership
 
+[Documentation](../docs/README.md)
+
 Keep these files as Fish definitions. Never redirect an unsupported generator's
 error/help output into a `.fish` file or replace generated content with a
 placeholder. Empty files shadow Fish's packaged/embedded completions; remove
