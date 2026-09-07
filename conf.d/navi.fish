@@ -23,7 +23,6 @@ if status is-interactive; and command -q navi
     if bind -M insert >/dev/null 2>/dev/null
         bind -M insert \en _navi_smart_replace
     end
-    # Remove the Ctrl+G binding navi sets (ghq owns it)
-    bind -e \cg 2>/dev/null
-    bind -M insert -e \cg 2>/dev/null
+    # This inline widget never installs navi's default Ctrl+G binding.
+    # Leave ghq's existing binding intact.
 end

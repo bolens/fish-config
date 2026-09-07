@@ -9,8 +9,9 @@ if status is-interactive
     # abnormal exits accumulate to justify touching shared universal state.
     if test (count $prompt_vars) -gt 5
         set -l live_fish_pids (pgrep -x fish)
+        test $status -eq 0; and test (count $live_fish_pids) -gt 0; or exit
         for prompt_var in $prompt_vars
-        set -l prompt_pid (string replace '_tide_prompt_' '' -- "$prompt_var")
+            set -l prompt_pid (string replace '_tide_prompt_' '' -- "$prompt_var")
             contains -- "$prompt_pid" $live_fish_pids; or set -Ue $prompt_var
         end
     end
