@@ -47,3 +47,5 @@ runtime proof. A topic without an implementation stays explicitly unimplemented.
 - [License scope and attribution](../THIRD_PARTY_NOTICES.md)
 - [Completion ownership](../completions/README.md)
 - [Development container](../.devcontainer/README.md)
+
+- [Woodpecker validation transition](woodpecker-transition.md)
