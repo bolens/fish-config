@@ -9,3 +9,5 @@ Installation validation alone does not establish feature completion.
 
 The 2026-09-06 extension maps [legacy shell capabilities](001-shell-baseline/legacy-contracts.md)
 and [all startup/function/completion files](001-shell-baseline/legacy-files.md).
+
+- [Woodpecker Linux validation](003-woodpecker-validation/spec.md) - planned native CI transition.
